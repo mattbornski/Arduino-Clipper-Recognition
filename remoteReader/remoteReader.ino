@@ -2,8 +2,8 @@
 #include <VirtualWire.h>
 #include <Wire.h>
 
-const byte transmitterPin = 10;
-const byte transmittingIndicatorPin = 11;
+const byte transmitterPin = 12;
+const byte transmittingIndicatorPin = 8;
 
 SL018 rfid;
 
@@ -14,7 +14,7 @@ void setup()
   Serial.begin(9600);
   
   vw_set_tx_pin(transmitterPin);
-  vw_setup(2400);
+  vw_setup(2000);
   
   pinMode(transmittingIndicatorPin, OUTPUT);
   digitalWrite(transmittingIndicatorPin, HIGH);  
