@@ -5,9 +5,15 @@ const byte doorSensorPin = 3;
 const byte receiverPin = 11;
 const byte receivingIndicatorPin = 8;
 
-const char *closeRfids[] = { "DEADBEEF", NULL };
+const char *closeRfids[] = { NULL };
 const char *openRfids[] = { NULL };
-const char *toggleRfids[] = { "CAFEF00D", NULL };
+const char *toggleRfids[] = {
+  // Sticker in wallet
+  "E2791DC4",
+  // Small tag sewn into left cap-touch bike glove
+  "D27DE539",
+  NULL
+};
 
 // Track when we last attempted to change the state of the door, to prevent thrashing it.
 unsigned long lastCommandSent;
@@ -93,7 +99,7 @@ void toggleDoor()
 void openDoor()
 {
   if (isDoorClosed()) {
-    Serial.println("Door is open, will be opened");
+    Serial.println("Door is closed, will be opened");
     toggleDoor();
   }
 }
